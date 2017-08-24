@@ -11,8 +11,9 @@ func JSONWapper(f func(c echo.Context) (int, string, interface{})) func(echo.Con
 	return func(c echo.Context) error {
 		code, msg, data := f(c)
 
-		if code == http.StatusOK {
-			msg = "success"
+		msg = "success"
+		if code != http.StatusOK {
+			msg = "error"
 		}
 
 		var resp = struct {
