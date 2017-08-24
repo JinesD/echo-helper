@@ -32,7 +32,7 @@ func JSONWapper(f func(c echo.Context) (int, interface{})) func(echo.Context) er
 
 // Health health check for echo
 func Health(e *echo.Echo) {
-	e.GET("/health", JSONWapper(func(c echo.Context) (int, string, interface{}) {
-		return http.StatusOK, "", nil
+	e.GET("/health", JSONWapper(func(c echo.Context) (int, interface{}) {
+		return http.StatusOK, nil
 	}))
 }
