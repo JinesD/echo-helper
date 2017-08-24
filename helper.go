@@ -7,11 +7,11 @@ import (
 )
 
 // JSONWapper format response structure
-func JSONWapper(f func(c echo.Context) (int, string, interface{})) func(echo.Context) error {
+func JSONWapper(f func(c echo.Context) (int, interface{})) func(echo.Context) error {
 	return func(c echo.Context) error {
-		code, msg, data := f(c)
+		code, data := f(c)
 
-		msg = "success"
+		msg := "success"
 		if code != http.StatusOK {
 			msg = "error"
 		}
