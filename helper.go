@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
+	"github.com/nu7hatch/gouuid"
 )
 
 // JSONWapper format response structure
@@ -35,4 +36,11 @@ func Health(e *echo.Echo) {
 	e.GET("/health", JSONWapper(func(c echo.Context) (int, interface{}) {
 		return http.StatusOK, nil
 	}))
+}
+
+// GenUUID generate a uuid
+func GenUUID() string {
+	u4, _ := uuid.NewV4()
+
+	return u4.String()
 }
